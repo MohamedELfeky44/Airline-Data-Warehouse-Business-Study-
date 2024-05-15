@@ -1,0 +1,25 @@
+CREATE BITMAP INDEX Country_IDX
+ON Passenger_Dim(Country);
+
+This index is suitable because the Country column has a relatively low number of 
+distinct values compared to the total number of rows in the table. 
+
+-------------------------------------------------------------------------------------------------------
+
+Bitmap Index on Year column: Assuming the Year column has relatively low cardinality, 
+a bitmap index can be efficient for queries filtering data based on year.
+CREATE BITMAP INDEX Year_IDX
+ON Date_Dim(Year);
+-----------------
+B-tree Index on Date_ column: This can be useful for range queries or equality conditions on the date.
+CREATE INDEX Date_Date_IDX
+ON Date_Dim(Date_);
+--------------------------------------------------------------------------------------------------------
+
+
+B-tree Index on Type column: becasue it is used frequently for filtering on interaction type, 
+a B-tree index on the Type column can be beneficial.
+
+CREATE INDEX Type_IDX
+ON Interaction_Dim(Type);
+--------------------------------------------------------------------------------------------------------
